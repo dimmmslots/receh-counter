@@ -6,7 +6,6 @@ import Image500 from './assets/500.png';
 import Image1000 from './assets/1000.png';
 import { Button } from './components/ui/button';
 import AchievementPage from './components/AchievementPage';
-import useKeyboardShortcut from 'use-keyboard-shortcut';
 import { CreateShorcut } from './lib/shortcut';
 import { numberWithCommas } from './lib/utils';
 import { Guide } from './components/Guide';
@@ -14,7 +13,6 @@ import { Guide } from './components/Guide';
 
 function App() {
 
-  const receh = [100, 200, 500, 1000];
   const [receh100, setReceh100] = useState(0);
   const [receh200, setReceh200] = useState(0);
   const [receh500, setReceh500] = useState(0);

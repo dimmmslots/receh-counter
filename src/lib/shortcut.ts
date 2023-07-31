@@ -1,9 +1,9 @@
 import useKeyboardShortcut from "use-keyboard-shortcut";
 
 export function CreateShorcut (keys: string[], callback:() => void) {
-    const {flushHeldKeys} = useKeyboardShortcut(
+    useKeyboardShortcut(
         keys,
-        shortcutKeys => callback(),
+        () => callback(),
         {
           ignoreInputFields: false,
           overrideSystem: false,
