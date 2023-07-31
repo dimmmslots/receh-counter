@@ -22,6 +22,7 @@ export function Guide() {
 <AlertDialogContent>
 <AlertDialogHeader>
   <AlertDialogTitle className="text-center">Receh Counter</AlertDialogTitle>
+  <AlertDialogDescription>
   <p className="font-bold text-2xl">Shortcuts</p>
   <div className="flex flex-row justify-between">
     <p className="text-sm">Add 1 Coin 100</p>
@@ -43,7 +44,6 @@ export function Guide() {
     <p className="text-sm">Subtract 1 Coin</p>
     <p className="text-sm">Same as above, replace Shift with Ctrl</p>
   </div>
-  <AlertDialogDescription>
         <AlertDialogCancel asChild className="flex flex-row">
         <Button variant={'outline'} size={'lg'} className="w-full">
         I understand!

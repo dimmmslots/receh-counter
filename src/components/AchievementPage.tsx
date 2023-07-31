@@ -10,14 +10,16 @@ import {
   interface Props {
     openState: boolean;
     onOpenChange: (open: boolean) => void;
-    text: string;
+    title: string;
+    desc: string;
   }
   
 
 export default function AchievementPage({
     openState,
     onOpenChange,
-    text
+    title, 
+    desc
 }: Props) {
 
     return (
@@ -34,8 +36,11 @@ export default function AchievementPage({
     <AlertDialogHeader>
       <AlertDialogTitle className="text-center">You unlocked an Achievement!!</AlertDialogTitle>
       <AlertDialogDescription>
-        <p className="text-4xl text-center text-blue-600 font-black">
-        {text}
+        <p className="text-4xl text-center text-blue-600 font-black mb-4">
+        {title}
+        </p>
+        <p>
+        {desc}
         </p>
       </AlertDialogDescription>
     </AlertDialogHeader>
