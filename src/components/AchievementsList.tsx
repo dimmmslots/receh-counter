@@ -30,15 +30,19 @@ export function AchievementList({achievements_status}: Props) {
 <AlertDialogContent>
 <AlertDialogHeader>
   <AlertDialogTitle className="text-center">Achievements</AlertDialogTitle>
-  <AlertDialogDescription>
+  <AlertDialogDescription> 
     {
         Object.keys(achievementLists).map((achievement) => {
             const { title, description } = achievementLists[achievement as keyof typeof achievementLists];
             const achieved = achievements_status[achievement];
             return (
                 <div className="flex flex-row justify-between my-2">
-                    {achieved ? <p className="text-sm">✅</p> : <p className="text-sm">❌</p>}
-                    <p className={achieved ? "text-sm line-through" : "text-sm"}>{title}</p>
+                   <div className="flex flex-row gap-2">
+                   <p>{achieved ? "✅" : "❌"} </p>
+                    <p className={achieved ? "text-sm line-through" : "text-sm"}>
+                        {title}
+                    </p>
+                   </div>
                     <p className={achieved ? "text-sm line-through" : "text-sm"}>{description}</p>
                 </div>
             )

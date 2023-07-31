@@ -39,7 +39,7 @@ export default function AchievementPage({
         <p className="text-4xl text-center text-blue-600 font-black mb-4">
         {title}
         </p>
-        <p>
+        <p className="text-center">
         {desc}
         </p>
       </AlertDialogDescription>
