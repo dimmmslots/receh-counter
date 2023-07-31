@@ -26,25 +26,27 @@ export const achievementLists = {
     }
 }
 
-export function checkAchievement(receh100: number, receh200: number, receh500: number, receh1000: number) {
+export function checkAchievement(receh100: number, receh200: number, receh500: number, receh1000: number, achieved: {
+    [key: string]: boolean
+}) {
     // if conditions are met, return the object keys of the achievement
-    if (receh100 >= 5) {
+    if (receh100 >= 5 && !achieved["juragan_cepek"]) {
         return "juragan_cepek"
     }
 
-    if (receh500 >= 5) {
+    if (receh500 >= 5 && !achieved["baginda_gopek"]) {
         return "baginda_gopek"
     }
 
-    if (receh1000 >= 5) {
+    if (receh1000 >= 5 && !achieved["raja_seceng"]) {
         return "raja_seceng"
     }
 
-    if (receh100 == 1 && receh200 == 9 && receh500 == 4 && receh1000 == 5) {
+    if ((receh100 == 1 && receh200 == 9 && receh500 == 4 && receh1000 == 5) && !achieved["indonesia"]) {
         return "indonesia"
     }
 
-    if ((receh100*100) + (receh200*200) + (receh500*500) + (receh1000*1000) >= 100000) {
+    if (((receh100*100) + (receh200*200) + (receh500*500) + (receh1000*1000) >= 1000) && !achieved["harbinger_of_receh"]) {
         return "harbinger_of_receh"
     }
 

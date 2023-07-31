@@ -23,8 +23,16 @@ function App() {
   const [achievementDesc, setAchievementDesc] = useState('');
   const [achievements, setAchievements] = useState(achievementLists);
   useEffect(() => {
-    if(checkAchievement(receh100, receh200, receh500, receh1000)){
-      const achievement_name = checkAchievement(receh100, receh200, receh500, receh1000) as string;
+    console.log(achievements);
+    console.log([receh100, receh200, receh500, receh1000]);
+    // create object with keys of the achievement name and value of the achievement isAchieved status
+    const achievements_status = Object.keys(achievements).reduce((acc, achievement) => {
+      acc[achievement] = achievements[achievement as keyof typeof achievements].isAchieved;
+      return acc;
+    }, {} as {[key: string]: boolean});
+    console.log(checkAchievement(receh100, receh200, receh500, receh1000, achievements_status));
+    if(checkAchievement(receh100, receh200, receh500, receh1000, achievements_status)){
+      const achievement_name = checkAchievement(receh100, receh200, receh500, receh1000, achievements_status) as string;
       setAchievementTitle(
         // fetch object value from achievements object using achievement_name
         achievementLists[achievement_name as keyof typeof achievementLists].title
@@ -42,8 +50,7 @@ function App() {
             ...prevAchievements[achievement_name as keyof typeof prevAchievements],
             isAchieved: true,
           }
-        }))
-        
+        }))        
         setTajir(true);
         setTimeout(() => {
         setTajir(false);
