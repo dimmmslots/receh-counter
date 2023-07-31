@@ -8,25 +8,11 @@ import { Button } from './components/ui/button';
 import AchievementPage from './components/AchievementPage';
 import useKeyboardShortcut from 'use-keyboard-shortcut';
 import { CreateShorcut } from './lib/shortcut';
+import { numberWithCommas } from './lib/utils';
+import { Guide } from './components/Guide';
 
 
 function App() {
-
-  CreateShorcut(["Shift", "Z"], () => {
-    setReceh100(receh100 + 1);
-  })
-
-  CreateShorcut(["Shift", "X"], () => {
-    setReceh200(receh200 + 1);
-  })
-
-  CreateShorcut(["Shift", "C"], () => {
-    setReceh500(receh500 + 1);
-  })
-
-  CreateShorcut(["Shift", "V"], () => {
-    setReceh1000(receh1000 + 1);
-  })
 
   const receh = [100, 200, 500, 1000];
   const [receh100, setReceh100] = useState(0);
@@ -50,6 +36,7 @@ function App() {
       // wait 5 seconds before closing
       setTimeout(() => {
         setTajir(false);
+        setAchievementText('');
       }
       , 5000);
     }
@@ -63,6 +50,7 @@ function App() {
       // wait 5 seconds before closing
       setTimeout(() => {
         setTajir(false);
+        setAchievementText('');
       }
       , 5000);
     }
@@ -76,6 +64,7 @@ function App() {
       // wait 5 seconds before closing
       setTimeout(() => {
         setTajir(false);
+        setAchievementText('');
       }
       , 5000);
     }
@@ -96,6 +85,38 @@ function App() {
     setReceh1000(parseInt(localStorage.getItem('receh1000') || '0'));
   }
 
+  CreateShorcut(["Shift", "Z"], () => {
+    if(achievementText === '') setReceh100(receh100 + 1);
+  })
+
+  CreateShorcut(["Control","Z"], () => {
+    if(receh100 && achievementText === '') setReceh100(receh100 - 1);
+  })
+
+  CreateShorcut(["Shift", "X"], () => {
+    if(achievementText === '') setReceh200(receh200 + 1);
+  })
+  
+  CreateShorcut(["Control", "X"], () => {
+    if(receh200 && achievementText === '') setReceh200(receh200 - 1);
+  })
+
+  CreateShorcut(["Shift", "C"], () => {
+    if(achievementText === '') setReceh500(receh500 + 1);
+  })
+
+  CreateShorcut(["Control", "C"], () => {
+    if(receh500 && achievementText === '') setReceh500(receh500 - 1);
+  })
+
+  CreateShorcut(["Shift", "V"], () => {
+    if(achievementText === '') setReceh1000(receh1000 + 1);
+  })
+
+  CreateShorcut(["Control", "V"], () => {
+    if(receh1000 && achievementText === '') setReceh1000(receh1000 - 1);
+  })
+
 
   return (
     <main className="flex flex-col items-center justify-center h-screen RobotoMono">
@@ -104,15 +125,15 @@ function App() {
         <Button onClick={storeToLocalStorage} className='bg-blue-500 text-white px-4 py-2 rounded-md mx-4 w-28'>Save</Button>
         <Button onClick={loadFromLocalStorage} className='bg-orange-500 text-white px-4 py-2 rounded-md mx-4 w-28'>Load</Button>
         </div>
-        <h1 className='text-7xl mb-8'>Rp. {(receh100 * 100)
-         + (receh200 * 200) + (receh500 * 500) + (receh1000 * 1000)
+        <h1 className='text-7xl mb-8'>Rp. {numberWithCommas((receh100 * 100)
+         + (receh200 * 200) + (receh500 * 500) + (receh1000 * 1000))
          }
          </h1>
         <div className="flex flex-row">
           <CountBtn count={receh100} setCount={setReceh100} text='100' className='mx-1 w-48' imagePath={Image100}/>
-          <CountBtn count={receh200} setCount={setReceh200} text='100' className='mx-1 w-48' imagePath={Image200}/>
-          <CountBtn count={receh500} setCount={setReceh500} text='100' className='mx-1 w-48' imagePath={Image500}/>
-          <CountBtn count={receh1000} setCount={setReceh1000} text='100' className='mx-1 w-48' imagePath={Image1000}/>
+          <CountBtn count={receh200} setCount={setReceh200} text='200' className='mx-1 w-48' imagePath={Image200}/>
+          <CountBtn count={receh500} setCount={setReceh500} text='500' className='mx-1 w-48' imagePath={Image500}/>
+          <CountBtn count={receh1000} setCount={setReceh1000} text='1000' className='mx-1 w-48' imagePath={Image1000}/>
         </div>
       </div>
       <div className='hidden'>
@@ -125,6 +146,8 @@ function App() {
       text={achievementText}
     />
       </div>
+    <Guide/>
+
     </main>
   );
 }
