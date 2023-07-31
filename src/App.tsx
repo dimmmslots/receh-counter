@@ -143,6 +143,7 @@ function App() {
       // iterate through achievements object and return object with key of achievement name and value of isAchieved
       Object.fromEntries(Object.entries(achievements).map(([key, value]) => [key, value.isAchieved]))
     }/>
+    <p className='my-6'>Check me out on <a href="https://github.com/dimmmslots" className='hover:text-blue-600 hover:underline text-yellow-600' target='_blank'>Github</a></p>
     </main>
   );
 }
