@@ -28,15 +28,15 @@ export const achievementLists = {
 
 export function checkAchievement(receh100: number, receh200: number, receh500: number, receh1000: number) {
     // if conditions are met, return the object keys of the achievement
-    if (receh100 >= 50) {
+    if (receh100 >= 5) {
         return "juragan_cepek"
     }
 
-    if (receh200 >= 50) {
+    if (receh500 >= 5) {
         return "baginda_gopek"
     }
 
-    if (receh1000 >= 50) {
+    if (receh1000 >= 5) {
         return "raja_seceng"
     }
 

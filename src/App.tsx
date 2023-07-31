@@ -36,13 +36,14 @@ function App() {
       // get isAchieved value from achievements object using achievement_name
       const isAchieved = achievements[achievement_name as keyof typeof achievements].isAchieved;
       if(!isAchieved){
-        setAchievements({
-          ...achievements,
+        setAchievements(prevAchievements => ({
+          ...prevAchievements,
           [achievement_name]: {
-            ...achievements[achievement_name as keyof typeof achievements],
+            ...prevAchievements[achievement_name as keyof typeof prevAchievements],
             isAchieved: true,
           }
-        })
+        }))
+        
         setTajir(true);
         setTimeout(() => {
         setTajir(false);
