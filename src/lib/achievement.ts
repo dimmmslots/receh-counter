@@ -30,15 +30,15 @@ export function checkAchievement(receh100: number, receh200: number, receh500: n
     [key: string]: boolean
 }) {
     // if conditions are met, return the object keys of the achievement
-    if (receh100 >= 5 && !achieved["juragan_cepek"]) {
+    if (receh100 >= 50 && !achieved["juragan_cepek"]) {
         return "juragan_cepek"
     }
 
-    if (receh500 >= 5 && !achieved["baginda_gopek"]) {
+    if (receh500 >= 50 && !achieved["baginda_gopek"]) {
         return "baginda_gopek"
     }
 
-    if (receh1000 >= 5 && !achieved["raja_seceng"]) {
+    if (receh1000 >= 50 && !achieved["raja_seceng"]) {
         return "raja_seceng"
     }
 
@@ -46,7 +46,7 @@ export function checkAchievement(receh100: number, receh200: number, receh500: n
         return "indonesia"
     }
 
-    if (((receh100*100) + (receh200*200) + (receh500*500) + (receh1000*1000) >= 10000) && !achieved["harbinger_of_receh"]) {
+    if (((receh100*100) + (receh200*200) + (receh500*500) + (receh1000*1000) >= 100000) && !achieved["harbinger_of_receh"]) {
         return "harbinger_of_receh"
     }
 
