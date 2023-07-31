@@ -6,9 +6,28 @@ import Image500 from './assets/500.png';
 import Image1000 from './assets/1000.png';
 import { Button } from './components/ui/button';
 import AchievementPage from './components/AchievementPage';
+import useKeyboardShortcut from 'use-keyboard-shortcut';
+import { CreateShorcut } from './lib/shortcut';
 
 
 function App() {
+
+  CreateShorcut(["Shift", "Z"], () => {
+    setReceh100(receh100 + 1);
+  })
+
+  CreateShorcut(["Shift", "X"], () => {
+    setReceh200(receh200 + 1);
+  })
+
+  CreateShorcut(["Shift", "C"], () => {
+    setReceh500(receh500 + 1);
+  })
+
+  CreateShorcut(["Shift", "V"], () => {
+    setReceh1000(receh1000 + 1);
+  })
+
   const receh = [100, 200, 500, 1000];
   const [receh100, setReceh100] = useState(0);
   const [receh200, setReceh200] = useState(0);
