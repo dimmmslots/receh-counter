@@ -12,6 +12,9 @@ import {
     onOpenChange: (open: boolean) => void;
     title: string;
     desc: string;
+    achievementStatus: {
+        [key: string]: boolean;
+    }
   }
   
 
@@ -19,7 +22,8 @@ export default function AchievementPage({
     openState,
     onOpenChange,
     title, 
-    desc
+    desc,
+    achievementStatus
 }: Props) {
 
     return (
@@ -42,6 +46,22 @@ export default function AchievementPage({
         <p className="text-center">
         {desc}
         </p>
+        {
+            // check if all achievements are unlocked, if yes, show this
+            Object.keys(achievementStatus).every((achievement) => {
+                return achievementStatus[achievement as keyof typeof achievementStatus];
+            }
+            ) ? (
+                <div>
+                  <p className="text-lg text-center text-white font-black my-6">
+        🎉 You completed all achievements! 🎉
+        </p>
+        <h1 className="text-blue-600 text-4xl font-black text-center">The Completionist</h1>
+                </div>
+            ) : (
+                <></>
+            )
+        }
       </AlertDialogDescription>
     </AlertDialogHeader>
   </AlertDialogContent>

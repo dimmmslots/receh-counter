@@ -136,6 +136,10 @@ function App() {
     }
       title={achievementTitle}
       desc={achievementDesc}
+      achievementStatus={
+        // iterate through achievements object and return object with key of achievement name and value of isAchieved
+        Object.fromEntries(Object.entries(achievements).map(([key, value]) => [key, value.isAchieved]))
+      }
     />
       </div>
     <Guide/>
